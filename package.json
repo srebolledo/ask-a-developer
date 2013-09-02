@@ -3,17 +3,15 @@
     "version"     : "0.0.1",
     "private"     : true,
     "dependencies": {
-        "locomotive"        : "0.3.x",
-        "express"           : "3.x.x",
-        "connect-powered-by": "0.1.x",
-        "ejs"               : "0.8.x",
-        "jade"              : "0.35.0",
-        "mongoose"          : "3.6.18",
-        "passport"          : ">= 0.1.6",
-        "passport-local"    : ">= 0.1.0",
-        "moment"            : "2.1.0",
-        "underscore"        : "1.5.1",
-        "log4js"            : "0.6.8"
+        "locomotive"        : "0.3.X",
+        "express"           : "3.3.X",
+        "jade"              : "0.35.X",
+        "mongoose"          : "3.6.X",
+        "passport"          : ">= 0.1.X",
+        "passport-local"    : ">= 0.1.X",
+        "moment"            : "2.1.X",
+        "underscore"        : "1.5.X",
+        "log4js"            : "0.6.X"
 
     }
 }

@@ -18,6 +18,9 @@ html
                         a(href="/tips") Tips
                     li
                         a(href="/pastebin") Pastebin
-
+            - if(user){
+                p.navbar-text.pull-right Signed in as
+                    a(href="#").navbar-link #{user.username}
+            - }
         div#container
             block content
