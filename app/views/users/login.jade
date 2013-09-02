@@ -1,0 +1,14 @@
+extends ../main_layout
+
+block content
+    div.container.col-lg-8.col-lg-offset-2
+        form(role="form", class="form-horizontal", action="/login", method="post")
+            div.form-group
+                label(for="username", class="col-lg-2 control-label") Username
+                div.col-lg-10
+                    input(id="username", type="text", class="form-control", placeholder="username",name="username")
+            div.form-group
+                label(for="password", class="col-lg-2 control-label") Password
+                div.col-lg-10
+                    input(id="password", name="password", type="password", class="form-control", placeholder="password")
+            button.btn.btn-default(type="submit") Login
