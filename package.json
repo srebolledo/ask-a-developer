@@ -3,15 +3,16 @@
     "version"     : "0.0.1",
     "private"     : true,
     "dependencies": {
-        "locomotive"        : "0.3.X",
-        "express"           : "3.3.X",
-        "jade"              : "0.35.X",
-        "mongoose"          : "3.6.X",
-        "passport"          : ">= 0.1.X",
-        "passport-local"    : ">= 0.1.X",
-        "moment"            : "2.1.X",
-        "underscore"        : "1.5.X",
-        "log4js"            : "0.6.X"
+        "locomotive"          : "0.3.X",
+        "express"             : "3.3.X",
+        "jade"                : "0.35.X",
+        "mongoose"            : "3.6.X",
+        "passport"            : ">= 0.1.X",
+        "passport-local"      : ">= 0.1.X",
+        "moment"              : "2.1.X",
+        "underscore"          : "1.5.X",
+        "log4js"              : "0.6.X",
+        "connect-ensure-login": "0.1.1"
 
     }
 }

@@ -18,9 +18,14 @@ html
                         a(href="/tips") Tips
                     li
                         a(href="/pastebin") Pastebin
-            - if(user){
-                p.navbar-text.pull-right Signed in as
-                    a(href="#").navbar-link #{user.username}
-            - }
-        div#container
-            block content
+                - if(user){
+                    p.navbar-text.pull-right Signed in as
+                        a(href="#").navbar-link #{user.username}
+                - }
+
+        div#container.col-lg-12
+            div.col-md-2
+                div#left-nav
+                    p left nav!
+            div.col-md-6
+                block content

@@ -11,8 +11,11 @@ var logger = require('log4js' ).getLogger('Router')
 
 module.exports = function routes() {
     this.root( 'pages#main' );
-    this.resources('tips');
     this.resources('users');
+
+    this.resources('projects', function(){
+        this.resources('tips');
+    });
     this.match('login', "users#login");
     this.match('login', 'users#loginUser', { via: 'post' });
 

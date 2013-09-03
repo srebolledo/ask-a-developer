@@ -3,12 +3,16 @@ var locomotive = require( 'locomotive' )
 var passport = require( 'passport' );
 var logger = require( 'log4js' ).getLogger( 'Users controller' );
 var UsersController = new Controller();
+var userModel = global.models.User;
+var ensureLogin = require('connect-ensure-login');
 
 UsersController.index = function () {
     this.title = 'Locomotive';
     this.passedVar = "hello!";
     this.render();
 }
+
+
 
 UsersController.login = function () {
     this.title = "Login";
@@ -36,15 +40,14 @@ UsersController.create = function () {
         email   : this.param( 'username' )
     };
 
-    global.models.User().createUser( userData, function(err){
+    userModel.createUser( userData, function(err){
         if(err){
             logger.error(err);
         }
         self.redirect( '/users' );
     } );
-
-
 }
+
 
 UsersController.before('*', function (next) {
     this.user = this.__req.user;

@@ -1,12 +1,24 @@
 var mongoose = require( 'mongoose' );
 var crypto = require('crypto' );
-
-var validPassword = function ( user, password ) {
-    return user._doc.password == password;
+var types = mongoose.Schema.Types;
+var schema = {
+    name  : "User",
+    schema: {
+        id      : String,
+        username: String,
+        password: String,
+        email   : String,
+    }
 };
 
-var createUser = function(userData, cb){
-    var newUser = global.models.User( {
+var methods = {};
+var statics = {};
+
+statics.validPassword = function ( user, password ) {
+    return user._doc.password == password;
+};
+statics.createUser = function(userData, cb){
+    var newUser =  this.model( schema.name )( {
         username: userData.username,
         password: crypto.createHash('sha1' ).update(userData.password ).digest('hex'),
         email   : userData.username
@@ -19,29 +31,14 @@ var createUser = function(userData, cb){
         }
         cb();
     });
-
-
-
-
 };
-
-var schema = {
-    name  : "User",
-    schema: {
-        id      : "string",
-        username: "string",
-        password: "string",
-        email   : "string",
-    }
-};
-
 
 module.exports = function () {
     schema.schema = new mongoose.Schema( schema.schema );
 
     //Defining methods
-    schema.schema.methods.validPassword = validPassword;
-    schema.schema.methods.createUser = createUser
+    schema.schema.methods = methods;
+    schema.schema.statics = statics;
 
     return schema;
 }();
