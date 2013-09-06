@@ -14,19 +14,18 @@ ProjectsController.index = function () {
             logger.error(err);
             self.render('index',{result: data, errorMsg:err.toString()});
         }
-        logger.info(data);
         self.render('index',{result: data});
-    })
-
+    });
 }
 
 ProjectsController.new = function () {
-
     this.render();
 }
+
 ProjectsController.show = function () {
     this.render();
 }
+
 ProjectsController.create = function () {
     var self = this;
     logger.info(this.req.user);
@@ -40,23 +39,15 @@ ProjectsController.create = function () {
             logger.error(err);
             this.redirect('/projects?errorMsg='+err.toString());
         }
-        self.redirect('/projects');
-    })
-
+        self.redirect(self.projectsPath());
+    });
 }
-ProjectsController.before('create', function(next){
-    ensureLogin.ensureLoggedIn('/login');
-    next();
-})
+ProjectsController.before('*', ensureLogin.ensureLoggedIn('/login'));
 
-ProjectsController.before('new', function(next){
-    ensureLogin.ensureLoggedIn('/login');
+ProjectsController.before ('*',function(next){
+    this.__res.locals.user = this.__req.user;
+    console.log(this.__res.locals);
     next();
-})
-
-ProjectsController.before('*', function (next) {
-    this.user = this.__req.user;
-    next();
-} );
+});
 
 module.exports = ProjectsController;

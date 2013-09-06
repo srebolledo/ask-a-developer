@@ -4,26 +4,12 @@ var passport = require( 'passport' );
 var logger = require( 'log4js' ).getLogger( 'Users controller' );
 var UsersController = new Controller();
 var userModel = global.models.User;
-var ensureLogin = require('connect-ensure-login');
+var login = require('connect-ensure-login');
 
 UsersController.index = function () {
     this.title = 'Locomotive';
     this.passedVar = "hello!";
     this.render();
-}
-
-
-
-UsersController.login = function () {
-    this.title = "Login";
-    this.render();
-}
-
-UsersController.loginUser = function () {
-    passport.authenticate( 'local', {
-        successRedirect: '/',
-        failureRedirect: this.urlFor( {action: 'login'} )
-    } )( this.__req, this.__res, this.__next );
 }
 
 UsersController.new = function () {
@@ -48,11 +34,10 @@ UsersController.create = function () {
     } );
 }
 
-
-UsersController.before('*', function (next) {
-    this.user = this.__req.user;
+UsersController.before('*', login.ensureLoggedIn('/login'));
+UsersController.before ('*',function(next){
+    this.__res.locals.user = this.__req.user;
+    console.log(this.__res.locals);
     next();
-} );
-
-
+});
 module.exports = UsersController;

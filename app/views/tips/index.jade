@@ -3,4 +3,19 @@ block head
     title #{title}
     link(rel="stylesheet", href="/stylesheets/style.css")
 block content
-    h1 #{title}
+    div.index
+        h1 #{title}
+            a.pull-right(href=newProjectTipPath(project_id)) New
+        div.tips
+        each tipObject in results
+            div.tip
+                div.thanks #{tipObject.thanks}
+                div.tip-description
+                    div.title
+                        -console.log(tipObject)
+                        h3
+                            a(href=projectTipPath(project_id, tipObject.id)) #{tipObject.title}
+                    div.tags
+                        each tag in tipObject.tags
+                            span #{tag}
+

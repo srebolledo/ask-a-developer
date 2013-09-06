@@ -12,7 +12,8 @@
         "moment"              : "2.1.X",
         "underscore"          : "1.5.X",
         "log4js"              : "0.6.X",
-        "connect-ensure-login": "0.1.1"
+        "connect-ensure-login": "0.1.1",
+        "marked": "0.2.9"
 
     }
 }

@@ -3,4 +3,9 @@ block head
     title #{title}
     link(rel="stylesheet", href="/stylesheets/style.css")
 block content
-    h1 #{title}
+    div.show
+        h1 #{result.title}
+        p.lead
+            each  tag in result.tags
+                span.tag #{tag}
+        div.content!= result.tip
