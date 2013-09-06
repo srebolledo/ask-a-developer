@@ -37,7 +37,6 @@ UsersController.create = function () {
 UsersController.before('*', login.ensureLoggedIn('/login'));
 UsersController.before ('*',function(next){
     this.__res.locals.user = this.__req.user;
-    console.log(this.__res.locals);
     next();
 });
 module.exports = UsersController;

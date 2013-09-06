@@ -1,33 +1,33 @@
-var mongoose = require('mongoose');
+var mongoose = require( 'mongoose' );
 var types = mongoose.Schema.Types;
 var schema = {
     name  : "Tip",
     schema: {
-        userId: String,
+        userId   : String,
         projectId: String,
-        tip: String,
-        title: String,
-        tags: [String],
-        thanks: {type: Number, default: 0}
+        tip      : String,
+        title    : String,
+        tags     : [String],
+        thanks   : {type: Number, default: 0}
     }
 };
 
 var methods = {};
 var statics = {};
 
-statics.addNewTip = function(schemaObject, cb){
-    var newTip = this.model(schema.name)({
-        userId:schemaObject.userId,
-        projectId:schemaObject.projectId,
-        tip:schemaObject.tip,
-        tags:schemaObject.tags,
-        title: schemaObject.title
-    });
+statics.addNewTip = function ( schemaObject, cb ) {
+    var newTip = this.model( schema.name )( {
+        userId   : schemaObject.userId,
+        projectId: schemaObject.projectId,
+        tip      : schemaObject.tip,
+        tags     : schemaObject.tags,
+        title    : schemaObject.title
+    } );
     newTip.save( function ( err ) {
         if ( err ) {
             return cb( err );
         }
-        console.log("Saving!");
+        console.log( "Saving!" );
         cb();
     } );
 

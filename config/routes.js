@@ -33,7 +33,7 @@ module.exports = function routes() {
     this.resources('projects', function(){
         this.resources('tips');
     });
-
+    this.resources('codetrims');
     //Login and Logout things
     this.match('login', "login#login", { via: 'get' });
     this.match('logout', "login#logout");

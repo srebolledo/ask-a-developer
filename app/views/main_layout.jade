@@ -11,36 +11,46 @@ html
 
         block head
     body
-        nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
-            div.navbar-header
-                a.navbar-brand(href="#") Dev helper
-            div.collapse.navbar-collapse.navbar-ex1-collapse
-                ul.nav.navbar-nav
-                    li.dropdown
-                        a(href="#", data-toggle="dropdown") Projects
-                            b.caret
-                        ul.dropdown-menu
-                            li
-                                a(href=projectsPath()) List all
-                            li
-                                a(href=newProjectPath()) New
-                    li
-                        a(href="/users") Users
-                - if(user){
-                    div.btn-group.pull-right(style="margin-top:10px")
-                        button.btn.btn-default.dropdown-toggle(data-toggle="dropdown") Signed in as #{user.username}
-                            span.caret(style="margin-left: 5px")
-                        ul.dropdown-menu
-                            li
-                                a(href="/user/show") My profile
-                            li.divider
-                            li
-                                a(href="/logout") Logout
-                - }
-
-        div#container.col-lg-12
-            div.col-md-2
-                div#left-nav
-                    p .
-            div.col-md-6
-                block content
+        div.wrapper
+            nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+                div.navbar-header
+                    a.navbar-brand(href="#") Dev helper
+                div.collapse.navbar-collapse.navbar-ex1-collapse
+                    ul.nav.navbar-nav
+                        li.dropdown
+                            a(href="#", data-toggle="dropdown") Projects
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href=projectsPath()) List all
+                                li
+                                    a(href=newProjectPath()) New
+                        li.dropdown
+                            a(href="#", data-toggle="dropdown") Codetrims
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href=codetrimsPath()) List all
+                                li
+                                    a(href=newCodetrimPath()) New
+                        li
+                            a(href="/users") Users
+                    - if(user){
+                        div.btn-group.pull-right(style="margin-top:10px")
+                            button.btn.btn-default.dropdown-toggle(data-toggle="dropdown") Signed in as #{user.username}
+                                span.caret(style="margin-left: 5px")
+                            ul.dropdown-menu
+                                li
+                                    a(href="/user/show") My profile
+                                li.divider
+                                li
+                                    a(href="/logout") Logout
+                    - }
+            div.row.content
+                div.col-md-2.col-md-offset-1
+                    p hello world
+                div.col-md-6
+                    div.content
+                        block content
+            div.footer
+                p this is the footer

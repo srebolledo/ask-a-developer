@@ -5,15 +5,14 @@ block head
 block content
     div.new
         h1 #{title}
-        div.container.col-lg-8.col-lg-offset-2
-            form.form-horizontal(action=projectTipsPath(project_id), method="post")
-                div.form-group
-                    label.control-label Title
-                    input(type="text", class="form-control", id="title", placeholder="Title", name="title")
-                div.form-group
-                    label.control-label Tags (Separe them by , )
-                    input(type="text", class="form-control", id="tags", placeholder="Tags", name="tags")
-                div.form-group
-                    label.col-lg-2.control-label Tip
-                    textarea.form-control(name="tip")
-                button.btn.btn-default(type="submit") Submit
+        form.form-horizontal(action=projectTipsPath(project_id), method="post")
+            div.form-group
+                label.control-label Title
+                input(type="text", class="form-control input-lg", id="title", placeholder="Title", name="title")
+            div.form-group
+                label.control-label Tags (Separe them by , )
+                input(type="text", class="form-control input-lg", id="tags", placeholder="Tags", name="tags")
+            div.form-group
+                label.control-label Tip
+                textarea.form-control(name="tip", rows="20")
+            button.btn.btn-primary.pull-right(type="submit", class="input-lg") Submit

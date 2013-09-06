@@ -1,5 +1,5 @@
 var mongoose = require( 'mongoose' );
-var crypto = require('crypto' );
+var crypto = require( 'crypto' );
 var types = mongoose.Schema.Types;
 var schema = {
     name  : "User",
@@ -17,20 +17,20 @@ var statics = {};
 statics.validPassword = function ( user, password ) {
     return user._doc.password == password;
 };
-statics.createUser = function(userData, cb){
-    var newUser =  this.model( schema.name )( {
+statics.createUser = function ( userData, cb ) {
+    var newUser = this.model( schema.name )( {
         username: userData.username,
-        password: crypto.createHash('sha1' ).update(userData.password ).digest('hex'),
+        password: crypto.createHash( 'sha1' ).update( userData.password ).digest( 'hex' ),
         email   : userData.username
     } );
-    newUser.save(function(err){
-        if(err){
-            logger.info(err);
-            return cb(err);
+    newUser.save( function ( err ) {
+        if ( err ) {
+            logger.info( err );
+            return cb( err );
 
         }
         cb();
-    });
+    } );
 };
 
 module.exports = function () {

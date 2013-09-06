@@ -5,7 +5,7 @@ block head
 block content
     div.index
         h1 #{title}
-            a.pull-right(href=newProjectTipPath(project_id)) New
+            a.pull-right(href=newProjectTipPath(project_id)) + New
         div.tips
         each tipObject in results
             div.tip

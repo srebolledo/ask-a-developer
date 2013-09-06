@@ -28,7 +28,6 @@ ProjectsController.show = function () {
 
 ProjectsController.create = function () {
     var self = this;
-    logger.info(this.req.user);
     var projectObj = {
         title: this.param('project_title'),
         userId: this.req.user._id,
@@ -46,7 +45,6 @@ ProjectsController.before('*', ensureLogin.ensureLoggedIn('/login'));
 
 ProjectsController.before ('*',function(next){
     this.__res.locals.user = this.__req.user;
-    console.log(this.__res.locals);
     next();
 });
 
