@@ -1,0 +1,22 @@
+.index .codetrim{
+    border: solid 1px black;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.index .codetrim-description{
+    display: inline-block;
+
+}
+.index .codetrim-description{
+    position: relative;
+    top: -8px;
+}
+
+.index .views{
+    display: inline-block;
+    font-size: 3em;
+    margin-right: 10px;
+    min-width: 40px;
+}
