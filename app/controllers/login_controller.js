@@ -25,4 +25,9 @@ LoginController.logout = function(){
 
 LoginController.before('login', login.ensureLoggedOut('/'));
 LoginController.before('logout', login.ensureLoggedIn('/'));
+LoginController.before('*',function(next){
+    var filename = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
+    this.__res.locals.controllerCss = [filename, "css"].join(".");
+    next();
+})
 module.exports = LoginController;

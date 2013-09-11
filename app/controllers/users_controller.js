@@ -35,8 +35,11 @@ UsersController.create = function () {
 }
 
 UsersController.before('*', login.ensureLoggedIn('/login'));
-UsersController.before ('*',function(next){
+
+UsersController.before( '*', function ( next ) {
     this.__res.locals.user = this.__req.user;
+    var filename = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
+    this.__res.locals.controllerCss = [filename, "css"].join(".");
     next();
-});
+} );
 module.exports = UsersController;

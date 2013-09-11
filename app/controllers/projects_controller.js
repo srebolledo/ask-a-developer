@@ -45,6 +45,8 @@ ProjectsController.before('*', ensureLogin.ensureLoggedIn('/login'));
 
 ProjectsController.before ('*',function(next){
     this.__res.locals.user = this.__req.user;
+    var filename = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
+    this.__res.locals.controllerCss = [filename, "css"].join(".");
     next();
 });
 

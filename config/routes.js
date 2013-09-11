@@ -7,8 +7,7 @@
 // information.
 
 var passport = require('passport');
-var logger = require('log4js' ).getLogger('Router')
-var checkLogin = require('connect-ensure-login');
+var logger = require('log4js' ).getLogger('Router');
 
 module.exports = function routes() {
     this.root( 'pages#main' );
@@ -22,7 +21,7 @@ module.exports = function routes() {
 //    GET	/photos/:id/edit	edit
 //    PUT	/photos/:id	update
 //    DELETE	/photos/:id	destroy
-//And this helpers
+//  And this helpers
 //    Helper	Returns
 //    photosPath()	/photos
 //    photoPath(id)	/photos/123
@@ -38,5 +37,5 @@ module.exports = function routes() {
     this.match('login', "login#login", { via: 'get' });
     this.match('logout', "login#logout");
     this.match('login', 'login#loginUser', { via: 'post' });
-
+    this.match('/:short_url', 'codetrims#short_url');
 }

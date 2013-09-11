@@ -1,0 +1,16 @@
+extends ../main_layout
+block head
+    title #{title}
+    link(rel="stylesheet", href="/stylesheets/style.css")
+block content
+    div.new
+        h1 #{title}
+        form.form-horizontal(action=codetrimsPath(), method="post")
+            input(type="hidden" id="title", placeholder="Title", name="id", value=result.id)
+            div.form-group
+                label.control-label Title
+                input(type="text", class="form-control input-lg", id="title", placeholder="Title", name="title", value=result.title)
+            div.form-group
+                label.control-label Code
+                textarea.form-control(name="codetrim", rows="20") #{result.codetrim}
+            button.btn.btn-primary.pull-right(type="submit", class="input-lg") Submit

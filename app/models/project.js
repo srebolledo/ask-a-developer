@@ -1,6 +1,8 @@
 var mongoose = require( 'mongoose' );
+var modelName = __filename.split( "/" )[ __filename.split( "/" ).length - 1 ].split( "." )[ 0 ].capitalize();
+var logger = require('log4js' ).getLogger(modelName + ' model');
 var schema = {
-    name  : "Project",
+    name  : modelName,
     schema: {
         title      : String,
         userId     : String,

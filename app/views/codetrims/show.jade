@@ -5,6 +5,10 @@ block head
 block content
     div.show
         h1 #{result.title}
+        -if (user){
+            h4
+                a(href=editCodetrimPath(result.id)) Edit
+        -}
         p.lead
         pre
             div.content #{result.codetrim}

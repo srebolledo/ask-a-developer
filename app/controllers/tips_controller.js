@@ -66,7 +66,8 @@ TipsController.before('*', ensureLogin.ensureLoggedIn('/login'));
 TipsController.before ('*',function(next){
     this.__res.locals.user = this.__req.user;
     this.__res.locals.project_id = this.params('project_id');
-    this.__res.locals.controllerCss = "tips.css"; //Maybe we should compute this value for every controller :)
+    var filename = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
+    this.__res.locals.controllerCss = [filename, "css"].join(".");
     next();
 });
 

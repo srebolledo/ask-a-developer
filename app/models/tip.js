@@ -1,7 +1,9 @@
 var mongoose = require( 'mongoose' );
-var types = mongoose.Schema.Types;
+var modelName = __filename.split( "/" )[ __filename.split( "/" ).length - 1 ].split( "." )[ 0 ].capitalize();
+var logger = require('log4js' ).getLogger(modelName + ' model');
+
 var schema = {
-    name  : "Tip",
+    name  : modelName,
     schema: {
         userId   : String,
         projectId: String,
