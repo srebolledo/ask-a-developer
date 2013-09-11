@@ -1,7 +1,8 @@
 var locomotive = require( 'locomotive' )
     , Controller = locomotive.Controller;
 var passport = require( 'passport' );
-var logger = require( 'log4js' ).getLogger( 'Project controller' );
+var controllerName = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
+var logger = require( 'log4js' ).getLogger( controllerName.capitalize()+' controller' );
 var ProjectsController = new Controller();
 var projectModel = global.models.Project;
 var ensureLogin = require('connect-ensure-login');
@@ -46,7 +47,7 @@ ProjectsController.before('*', ensureLogin.ensureLoggedIn('/login'));
 ProjectsController.before ('*',function(next){
     this.__res.locals.user = this.__req.user;
     var filename = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
-    this.__res.locals.controllerCss = [filename, "css"].join(".");
+    this.__res.locals.controllerName = controllerName;
     next();
 });
 

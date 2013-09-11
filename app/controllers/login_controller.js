@@ -1,6 +1,7 @@
 var locomotive = require( 'locomotive' )
     , Controller = locomotive.Controller;
-var logger = require( 'log4js' ).getLogger( 'Users controller' );
+var controllerName = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
+var logger = require( 'log4js' ).getLogger( controllerName.capitalize()+' controller' );
 var LoginController = new Controller();
 var login = require('connect-ensure-login');
 var passport = require('passport');
@@ -26,8 +27,7 @@ LoginController.logout = function(){
 LoginController.before('login', login.ensureLoggedOut('/'));
 LoginController.before('logout', login.ensureLoggedIn('/'));
 LoginController.before('*',function(next){
-    var filename = __filename.split("/")[__filename.split("/").length -1].split("_")[0];
-    this.__res.locals.controllerCss = [filename, "css"].join(".");
+    this.__res.locals.controllerName = controllerName;
     next();
 })
 module.exports = LoginController;
