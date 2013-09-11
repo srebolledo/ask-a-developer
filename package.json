@@ -1,6 +1,6 @@
 {
     "name"        : "dev-helper",
-    "version"     : "0.0.1",
+    "version"     : "0.0.2",
     "private"     : true,
     "dependencies": {
         "locomotive"          : "0.3.X",
@@ -13,7 +13,7 @@
         "underscore"          : "1.5.X",
         "log4js"              : "0.6.X",
         "connect-ensure-login": "0.1.1",
-        "marked": "0.2.9"
+        "marked"              : "0.2.9"
 
     }
 }

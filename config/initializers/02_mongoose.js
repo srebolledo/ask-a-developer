@@ -1,28 +1,17 @@
 var mongoose = require('mongoose');
-var schemas = require('../schemas');
 var _ = require('underscore');
 var logger = require('log4js' ).getLogger("Mongoose initializer");
 var config = require('../config');
 
-
-
-module.exports = function(){
+module.exports = function(done){
     var self = this;
-    logger.info("Initializing mongoose");
-    var mongoConfig = config[this.env].mongodb;
-    mongoose.connect('mongodb://'+mongoConfig.host+'/'+mongoConfig.db_name);
+    logger.info("Initializing mongoose, params: host "+config.mongodb.host + ", db_name: "+config.mongodb.db_name);
 
-    //Adding the models to mongoose
-    var models = {};
-    _.each(schemas.schemas, function(model){
-        if(model.schema.name == "" || typeof model.schema.name == "undefined"){
-            logger.error("The model " + model.filename + " doesn't export a name, not loading!");
+    mongoose.connect('mongodb://'+config.mongodb.host+'/'+config.mongodb.db_name, function(err){
+        if(err){
+            done("It appears that MongoDB is not running. Check your MongoDB instance. " + err.toString());
         }
-        else{
-            logger.info("Loading model: "+model.filename);
-            models[model.schema.name] = mongoose.model(model.schema.name, model.schema.schema);
-        }
+        logger.info("Mongoose is initialized!");
+        done();
     });
-    global.models = models;
-    return models;
 }
