@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var schemas = require('../schemas');
 var _ = require('underscore');
 var logger = require('log4js' ).getLogger("Models initializer");
-var config = require('../config');
 
 module.exports = function(){
      //Adding the models to mongoose
