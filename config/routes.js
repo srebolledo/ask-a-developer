@@ -34,6 +34,14 @@ module.exports = function routes() {
     });
     this.resources('codetrims');
     //Login and Logout things
+    this.match('/auth/facebook', passport.authenticate('facebook'), {via: 'get'});
+    this.match('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
+
+    this.match('/auth/twitter', passport.authenticate('twitter'), {via: 'get'});
+    
+    this.match('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
     this.match('login', "login#login", { via: 'get' });
     this.match('logout', "login#logout");
     this.match('login', 'login#loginUser', { via: 'post' });

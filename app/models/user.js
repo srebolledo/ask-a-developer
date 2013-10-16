@@ -10,6 +10,8 @@ var schema = {
         username: String,
         password: String,
         email   : String,
+        payload : Object,
+        provider: String
     }
 };
 
@@ -23,7 +25,8 @@ statics.createUser = function ( userData, cb ) {
     var newUser = this.model( schema.name )( {
         username: userData.username,
         password: crypto.createHash( 'sha1' ).update( userData.password ).digest( 'hex' ),
-        email   : userData.username
+        email   : userData.username,
+        provider: userData.provider ? userData.provider : 'local'
     } );
     newUser.save( function ( err ) {
         if ( err ) {
@@ -37,7 +40,6 @@ statics.createUser = function ( userData, cb ) {
 
 module.exports = function () {
     schema.schema = new mongoose.Schema( schema.schema );
-
     //Defining methods
     schema.schema.methods = methods;
     schema.schema.statics = statics;

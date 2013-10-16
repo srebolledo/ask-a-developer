@@ -4,6 +4,7 @@ html
         link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
         link(rel="stylesheet", href="/stylesheets/bootstrap-theme.min.css")
         link(rel="stylesheet", href="/stylesheets/style.css")
+        link(rel="stylesheet", href="/media/font-awesome/css/font-awesome.min.css")
         if(controllerName)
             link(rel="stylesheet", href="/stylesheets/controllers/" + controllerName + ".css")
             script(src="/javascript/controllers/"+controllerName+".js", type="text/javascript")
@@ -39,7 +40,9 @@ html
                     - if(user){
                         div.btn-group.pull-right(style="margin-top:10px")
                             button.btn.btn-default.dropdown-toggle(data-toggle="dropdown") Signed in as #{user.username}
+                                i(class="icon-"+user.provider,style="margin-left: 4px;")
                                 span.caret(style="margin-left: 5px")
+
                             ul.dropdown-menu
                                 li
                                     a(href="/user/show") My profile
@@ -52,6 +55,7 @@ html
                     p hello world
                 div.col-md-6
                     div.content
+                        a(href="/auth/facebook") Login with facebook                 
                         block content
             div.footer
                 p this is the footer

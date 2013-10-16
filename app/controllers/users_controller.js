@@ -41,6 +41,7 @@ UsersController.before('*', login.ensureLoggedIn('/login'));
 
 UsersController.before( '*', function ( next ) {
     this.__res.locals.user = this.__req.user;
+    logger.warn(this.__req.user);
     this.__res.locals.controllerName = controllerName;
     next();
 } );
